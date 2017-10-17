@@ -25,6 +25,7 @@
             </ul>
         </article>
         <button class="btn btn--stripe" type="button" id="startGameBtn">Starta spelet</button>
+        <button class="btn btn--stripe" type="button" id="restartGameBtn">Restart</button>
         <section id="gameBoard">
             <ul id="letterButtons">
                 <li><button class="btn btn--stripe" type="button" value="A">A</button></li>
@@ -46,7 +47,7 @@
                 <li><button class="btn btn--stripe" type="button" value="Q">Q</button></li>
                 <li><button class="btn btn--stripe" type="button" value="R">R</button></li>
                 <li><button class="btn btn--stripe" type="button" value="S">S</button></li>
-                <li><button class="btn btn--stripe" type="button" value="T" disabled>T</button></li>
+                <li><button class="btn btn--stripe" type="button" value="T">T</button></li>
                 <li><button class="btn btn--stripe" type="button" value="U">U</button></li>
                 <li><button class="btn btn--stripe" type="button" value="V">V</button></li>
                 <li><button class="btn btn--stripe" type="button" value="W">W</button></li>
@@ -59,7 +60,8 @@
             </ul>
             <section id="letterBoxes">
                 <!-- This is where the matched letters should appear, these should match the number of -->
-                <!-- <ul>
+                <ul id="letterBoxesUl">
+                    <!--
                     <li><input type="text" disabled value="" /></li>
                     <li><input type="text" disabled value="" /></li>
                     <li><input type="text" disabled value="" /></li>
