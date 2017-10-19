@@ -87,6 +87,10 @@ footer {
   text-align: center;
 }
 
+#hangman {
+  width: 20em;
+}
+
 #startGameBtn {
   font-size: 1.5em;
 }
@@ -99,8 +103,10 @@ footer {
   display: inline-flex;
   list-style-type: none;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  font-size: 2em;
+  
 }
 
 #letterButtons button:not(last-child) {
@@ -114,13 +120,18 @@ footer {
   display: inline-flex;
 }
 
+#letterBoxesUl {
+  display: flex;
+  justify-content: center;
+}
+
 #letterBoxes input {
-  border: 1px solid #666;
+  //border: olid #666;
   color: #666;
-  font-size: 1.5em;
+  font-size: 2em;
   font-weight: bold;
-  line-height: 2em;
-  margin-top: 1em;
+  //line-height: 2em;
+  //margin-top: 1em;
   padding: 20px 5px;
   text-align: center;
   width: 2em;
@@ -131,7 +142,7 @@ footer {
   font-size: 1.5em;
 }
 
-.btn {
+.btn, .startbtn, .restbtn {
   -moz-user-select: text;
   background-color: #fff;
   background: transparent;

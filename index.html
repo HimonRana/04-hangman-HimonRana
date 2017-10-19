@@ -23,9 +23,22 @@
             <ul>
                 <li>Övriga regler</li>
             </ul>
+            <img id="hangman" src="images/h0.png" alt="hangman">
         </article>
-        <button class="btn btn--stripe" type="button" id="startGameBtn">Starta spelet</button>
-        <button class="btn btn--stripe" type="button" id="restartGameBtn">Restart</button>
+        <section id="letterBoxes" class="flex-container">
+            <!-- This is where the matched letters should appear, these should match the number of -->
+            <ul id="letterBoxesUl">
+                <!--
+                <li><input type="text" disabled value="" /></li>
+                <li><input type="text" disabled value="" /></li>
+                <li><input type="text" disabled value="" /></li>
+                <li><input type="text" disabled value="" /></li>
+                <li><input type="text" disabled value="" /></li>
+                <li><input type="text" disabled value="&nbsp;"  /></li>
+            </ul> -->
+        </section>
+        <button class="startbtn btn--stripe" type="button" id="startGameBtn">Starta spelet</button>
+        <button class="restbtn btn--stripe" type="button" id="restartGameBtn">Restart</button>
         <section id="gameBoard">
             <ul id="letterButtons">
                 <li><button class="btn btn--stripe" type="button" value="A">A</button></li>
@@ -58,19 +71,6 @@
                 <li><button class="btn btn--stripe" type="button" value="Ä">Ä</button></li>
                 <li><button class="btn btn--stripe" type="button" value="Ö">Ö</button></li>
             </ul>
-            <section id="letterBoxes">
-                <!-- This is where the matched letters should appear, these should match the number of -->
-                <ul id="letterBoxesUl">
-                    <!--
-                    <li><input type="text" disabled value="" /></li>
-                    <li><input type="text" disabled value="" /></li>
-                    <li><input type="text" disabled value="" /></li>
-                    <li><input type="text" disabled value="" /></li>
-                    <li><input type="text" disabled value="" /></li>
-                    <li><input type="text" disabled value="&nbsp;"  /></li>
-                </ul> -->
-            </section>
-            <img id="hangman" src="images/h0.png" alt="hangman">
         </section>
         <section id="message">
             <!-- This is where messages should appear -->
