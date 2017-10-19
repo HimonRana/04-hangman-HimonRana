@@ -9,9 +9,9 @@ var selectedWord; // Ett av orden valt av en slumpgenerator
 var hangmanImgNr = 0; // Vilken av bilderna som kommer upp beroende på hur många fel du gjort
 var msgElem; // Ger meddelande när spelet är över
 var startGameBtn = document.getElementById('startGameBtn'); // Knappen du startar spelet med
-//var letterButtons = document.getElementById('letterButtons'); // Knapparna för bokstäverna
+var letterButtons = document.getElementById('letterButtons'); // Knapparna för bokstäverna
 var startTime; // Mäter tiden 
-var letterBoxesUl = document.getElementById('letterBoxesUl');
+//var letterBoxesUl = document.getElementById('letterBoxesUl');
 var restartGameBtn = document.getElementById('restartGameBtn');
 // Funktion som körs då hela webbsidan är inladdad, dvs då all HTML-kod är utförd
 
@@ -27,13 +27,14 @@ startGameBtn.addEventListener('click', function(event) {
     letterBoxes();
 });
 
+
 restartGameBtn.addEventListener('click', function() {
-    startGameBtn.target.setAttribute('enabled', 'enabled')
+    location.reload(false);
 });
+
 // event listener för reset
 // sätter startgamebtn till enabled igen
 // och restartar spelet
-
 
 
 // Funktion som slumpar fram ett ord
@@ -63,7 +64,6 @@ function letterBoxes () {
       }  else {
           wrongGuess();
       }
-      console.log(guess);
   }
 
   function correctGuess(guess) {
@@ -77,14 +77,23 @@ function letterBoxes () {
       hangmanImgNr++;
       var hangmanImg = document.getElementById('hangman');
       hangmanImg.src = "images/h"+ hangmanImgNr +".png";
+      if (hangmanImgNr === 6) {
+      for (var a = 0; a < alphabetButtons.length; a++) {
+          alphabetButtons[a].setAttribute('disabled', 'disabled');
+        }
+    }
+          
+      
   }
 
-  var letterButtons = document.querySelectorAll('.btn');
-      for (var j = 0; j < letterButtons.length; j++) {
+  var alphabetButtons = document.querySelectorAll('.btn');
+      for (var j = 0; j < alphabetButtons.length; j++) {
           //letterButtons[j].getAttribute('value');
-          letterButtons[j].addEventListener('click', checkGuess)
+          alphabetButtons[j].addEventListener('click', checkGuess)
+          alphabetButtons[j].addEventListener('click', function(event) {
+              event.target.setAttribute('disabled', 'disabled')
+          });
       }
-
 // Funktionen ropas vid vinst eller förlust, gör olika saker beroende av det
 
 // Funktion som inaktiverar/aktiverar bokstavsknapparna beroende på vilken del av spelet du är på.
