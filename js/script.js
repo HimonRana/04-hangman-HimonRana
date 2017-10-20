@@ -27,6 +27,8 @@ var seconds = 00;
 var tens = 00;
 var interval ;
 
+// Startknapp som får spelet igång vid knapptryckning
+
 startGameBtn.addEventListener('click', startGame) 
 
 function startGame(event) {
@@ -40,6 +42,8 @@ function startGame(event) {
     event.target.setAttribute('disabled', 'disabled');
 };
 
+// Restartknapp som startar spelet från början igen
+
 restartGameBtn.addEventListener('click', function() {
     location.reload(false);
 });
@@ -50,7 +54,7 @@ function randomWord () {
     selectedWord = wordList[Math.floor(Math.random() * wordList.length)];
 }
  
-// Funktionen som tar fram bokstävernas rutor, antal beror på vilket ord
+// Funktionen som tar fram bokstävernas rutor beroende av val av ord
 
 function letterBoxes () {
     for (var i=0; i < selectedWord.length; i++) {
@@ -70,6 +74,8 @@ function checkGuess (event) {
         wrongGuess();
     }
 }
+
+// Funktion som körs vid rätt gissning och stoppar tiden vid rätt gissning av ord
   
 function correctGuess(guess) {
     for (var j=0; j < selectedWord.length; j++) {
@@ -86,6 +92,7 @@ function correctGuess(guess) {
     }
 }
 
+// Funktion som körs vid fel gissning och en bild dyker upp vid varje fel bokstav samt stoppar tiden vid 6 fel
 
 function wrongGuess() {
     hangmanImgNr++;
@@ -100,12 +107,16 @@ function wrongGuess() {
     }         
 }
 
+// Funktion som som startar igång vid knappning av bokstav som skickar vidare till gissning av bokstav
+
 for (var j = 0; j < alphabetButtons.length; j++) {
     alphabetButtons[j].addEventListener('click', checkGuess)
     alphabetButtons[j].addEventListener('click', function(event) {
     event.target.setAttribute('disabled', 'disabled')
     });
 }
+
+// Funktion som får timern att visa rätta siffror
 
 function startTimer() {
     tens++; 
