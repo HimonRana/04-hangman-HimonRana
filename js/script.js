@@ -1,31 +1,40 @@
 // Globala variabler
-function init() { // End init
 
-var wordList = ['ROCKET', 'HIMON', 'BULLE', 'CHAS', 'CHAMPION']; // Lista med spelets alla ord
+
+var wordList = ['ROCKET', 'HANGMAN', 'HUSSEÄRENÅSNA', 'CHAS']; // Lista med spelets alla ord
 var selectedWord; // Ett av orden valt av en slumpgenerator
 //var letterBoxes = document.getElementById('letterBoxes'); //Rutorna där bokstäverna ska stå
-
+var correctGuessNr = 0;
 //var hangmanImg = document.getElementById('hangman'); //Bild som kommer vid fel svar
 var hangmanImgNr = 0; // Vilken av bilderna som kommer upp beroende på hur många fel du gjort
 var msgElem; // Ger meddelande när spelet är över
-var startGameBtn = document.getElementById('startGameBtn'); // Knappen du startar spelet med
-var letterButtons = document.getElementById('letterButtons'); // Knapparna för bokstäverna
+ // Knappen du startar spelet med
+ // Knapparna för bokstäverna
 var startTime; // Mäter tiden 
 //var letterBoxesUl = document.getElementById('letterBoxesUl');
-var restartGameBtn = document.getElementById('restartGameBtn');
+
+
 // Funktion som körs då hela webbsidan är inladdad, dvs då all HTML-kod är utförd
 
 // Initiering av globala variabler samt koppling av funktioner till knapparna.
-
+function init() { // End init
 
 // Funktion som startar spelet vid knapptryckning, och då tillkallas andra funktioner
+var startGameBtn = document.getElementById('startGameBtn');
+var restartGameBtn = document.getElementById('restartGameBtn');
+var letterButtons = document.getElementById('letterButtons');
+var alphabetButtons = document.querySelectorAll('.btn');
 
-startGameBtn.addEventListener('click', function(event) {
-    // disable event.target until reset is clicked
-    event.target.setAttribute('disabled', 'disabled');
+startGameBtn.addEventListener('click', startGame) 
+
+function startGame(event) {
+    for (var i = 0; i < alphabetButtons.length; i++) {
+        alphabetButtons[i].removeAttribute('disabled', 'disabled'); 
+    }
     randomWord();
     letterBoxes();
-});
+    event.target.setAttribute('disabled', 'disabled');
+};
 
 
 restartGameBtn.addEventListener('click', function() {
@@ -49,7 +58,7 @@ function randomWord () {
 function letterBoxes () {
     for (var i=0; i < selectedWord.length; i++) {
         var box = document.createElement('li');
-        box.innerHTML = '<input disabled id=lb' +i+ ' />'
+        box.innerHTML = '<input disabled id=boxList' +i+ '>'
         letterBoxesUl.appendChild(box);
     }    
 }
@@ -65,13 +74,21 @@ function letterBoxes () {
           wrongGuess();
       }
   }
+  
+function correctGuess(guess) {
+    for (var j=0; j < selectedWord.length; j++) {
+        if (selectedWord[j] == guess) {
+        document.getElementById('boxList' + j).value = guess;
+        correctGuessNr++;
+        if (correctGuessNr === selectedWord.length) {
+            setTimeout(function() {
+            alert("CONGRATULATION!");
+            }, 200);
+        }
+        }
+    }
+}
 
-  function correctGuess(guess) {
-      for (var j=0; j < selectedWord.length; j++) {
-          if (selectedWord[j] == guess)
-              document.getElementById('lb' + j).value = guess;
-      }
-  }
 
   function wrongGuess() {
       hangmanImgNr++;
@@ -81,14 +98,11 @@ function letterBoxes () {
       for (var a = 0; a < alphabetButtons.length; a++) {
           alphabetButtons[a].setAttribute('disabled', 'disabled');
         }
-    }
-          
-      
+        alert('GAME OVER');
+    }         
   }
 
-  var alphabetButtons = document.querySelectorAll('.btn');
       for (var j = 0; j < alphabetButtons.length; j++) {
-          //letterButtons[j].getAttribute('value');
           alphabetButtons[j].addEventListener('click', checkGuess)
           alphabetButtons[j].addEventListener('click', function(event) {
               event.target.setAttribute('disabled', 'disabled')
