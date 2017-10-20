@@ -10,25 +10,18 @@
 
 <body>
     <header>
-        <h1>Häng Himon!</h1>
+        <h1>Häng Himon</h1>
     </header>
     <main>
         <article>
-            <h2>Välkommen till spelet Hänga Himon.</h2>
+            <h2>Välkommen till spelet där du ska Hänga Himon.</h2>
             <img id="hangman" src="images/h0.png" alt="hangman">
         </article>
         <section id="letterBoxes" class="flex-container">
             <!-- This is where the matched letters should appear, these should match the number of -->
             <ul id="letterBoxesUl">
-                <!--
-                <li><input type="text" disabled value="" /></li>
-                <li><input type="text" disabled value="" /></li>
-                <li><input type="text" disabled value="" /></li>
-                <li><input type="text" disabled value="" /></li>
-                <li><input type="text" disabled value="" /></li>
-                <li><input type="text" disabled value="&nbsp;"  /></li>
-            </ul> -->
         </section>
+        <p id="time"><span id="seconds">00</span><span id="semi">:</span><span id="tens">00</span></p>
         <button class="startbtn btn--stripe" type="button" id="startGameBtn">Starta spelet</button>
         <button class="restbtn btn--stripe" type="button" id="restartGameBtn">Restart</button>
         <section id="gameBoard">
@@ -64,9 +57,7 @@
                 <li><button class="btn btn--stripe" type="button" disabled value="Ö">Ö</button></li>
             </ul>
         </section>
-        <section id="message">
-            <!-- This is where messages should appear -->
-        </section>
+
     </main>
     <footer>
         Chas Academy - Hangman
